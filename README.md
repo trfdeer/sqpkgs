@@ -11,7 +11,7 @@
 {
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
-    sqpkgs.url = "git+ssh://git@github.com:trfdeer/sqpkgs";
+    sqpkgs.url = "git+ssh://git@github.com/trfdeer/sqpkgs";
   };
 
   outputs = { nixpkgs, sqpkgs, ... }: {

@@ -30,11 +30,15 @@ stdenvNoCC.mkDerivation {
   nativeBuildInputs = [ makeBinaryWrapper ];
 
   installPhase = ''
-    install -Dm644 $src $out/share/papermc/paper.jar
+    runHook preInstall
 
-    makeWrapper ${lib.getExe jre_headless} $out/bin/papermc \
-      --add-flags "-jar $out/share/papermc/paper.jar nogui" \
+    install -D $src $out/share/papermc/papermc.jar
+
+    makeWrapper ${lib.getExe jre_headless} "$out/bin/minecraft-server" \
+      --append-flags "-jar $out/share/papermc/papermc.jar nogui" \
       ${lib.optionalString stdenvNoCC.hostPlatform.isLinux "--prefix LD_LIBRARY_PATH : ${lib.makeLibraryPath [ udev ]}"}
+
+    runHook postInstall
   '';
 
   meta = with lib; {
@@ -42,6 +46,6 @@ stdenvNoCC.mkDerivation {
     homepage = "https://papermc.io/";
     license = licenses.gpl3Only;
     platforms = platforms.linux;
-    mainProgram = "papermc";
+    mainProgram = "minecraft-server";
   };
 }
