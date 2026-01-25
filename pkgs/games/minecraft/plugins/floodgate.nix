@@ -21,8 +21,10 @@ stdenvNoCC.mkDerivation {
   dontUnpack = true;
 
   installPhase = ''
-    install -Dm644 $src $out/plugin.jar
+    install -Dm644 $src $out/floodgate-spigot.jar
   '';
+
+  passthru.pluginJar = "floodgate-spigot.jar";
 
   meta = with lib; {
     description = "Floodgate – authentication bridge for GeyserMC";

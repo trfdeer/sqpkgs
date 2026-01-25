@@ -21,8 +21,10 @@ stdenvNoCC.mkDerivation {
   dontUnpack = true;
 
   installPhase = ''
-    install -Dm644 $src $out/plugin.jar
+    install -Dm644 $src $out/geyser-spigot.jar
   '';
+
+  passthru.pluginJar = "geyser-spigot.jar";
 
   meta = with lib; {
     description = "GeyserMC – allow Bedrock clients to join Java servers";
