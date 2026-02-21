@@ -4,9 +4,9 @@
   fetchurl,
 }:
 let
-  version = "2.9.2"; # From https://download.geysermc.org/v2/projects/geyser
-  build = "1044"; # From https://download.geysermc.org/v2/projects/geyser/versions/2.9.2/builds
-  sha256 = "sha256-801b4knumTaAuL3LVtQTdIy5jLY/yoWoEAsB+jp08nA="; # From ^above^ (spigot) with nix hash convert --to sri --hash-algo sha256
+  version = "2.9.4"; # From https://download.geysermc.org/v2/projects/geyser
+  build = "1080"; # From https://download.geysermc.org/v2/projects/geyser/versions/2.9.2/builds
+  sha256 = "sha256-QoLuLoy9/sSQY0rte2urxgIcK7LlF7qYFOiT2lcEYMg="; # From ^above^ (spigot) with nix hash convert --to sri --hash-algo sha256
 in
 
 stdenvNoCC.mkDerivation {
