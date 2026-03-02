@@ -23,12 +23,21 @@
             minecraftPlugins = final.callPackage ./pkgs/games/minecraft/plugins { };
           };
         };
-        terraria = import ./pkgs/games/terraria;
 
-        default = final: prev: (self.overlays.sq final prev) // (self.overlays.terraria final prev);
+        terraria = import ./pkgs/games/terraria;
+        drivers = import ./pkgs/drivers;
+
+        default =
+          final: prev:
+          (self.overlays.sq final prev)
+          // (self.overlays.terraria final prev)
+          // (self.overlays.drivers final prev);
       };
 
-      packages.${system}.papermc = pkgs.sqpkgs.papermc;
+      packages.${system} = {
+        papermc = pkgs.sqpkgs.papermc;
+        cups-brother-hll2440dw = pkgs.cups-brother-hll2440dw;
+      };
 
       legacyPackages.${system} = {
         papermcPackages = pkgs.sqpkgs.papermcPackages;
