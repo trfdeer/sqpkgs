@@ -5,8 +5,8 @@
 }:
 let
   version = "2.2.5"; # From https://download.geysermc.org/v2/projects/floodgate
-  build = "126"; # From https://download.geysermc.org/v2/projects/floodgate/versions/2.2.5/builds
-  sha256 = "sha256-1kevbNh1zsZbJj/+TlEgTabptu24tIHTe6/czILxBdk="; # From ^above^ (spigot) with nix hash convert --to sri --hash-algo sha256
+  build = "138"; # From https://download.geysermc.org/v2/projects/floodgate/versions/2.2.5/builds
+  sha256 = "sha256-RL25COL7T/G5dNUxPQSKYlohVVqYRM+4Ylapjo4ca9E="; # From ^above^ (spigot) with nix hash convert --to sri --hash-algo sha256
 in
 
 stdenvNoCC.mkDerivation {

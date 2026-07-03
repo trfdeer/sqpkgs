@@ -2,7 +2,7 @@
   description = "repository for packages i need";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-25.11";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-26.05";
   };
 
   outputs =
@@ -24,14 +24,9 @@
           };
         };
 
-        terraria = import ./pkgs/games/terraria;
         drivers = import ./pkgs/drivers;
 
-        default =
-          final: prev:
-          (self.overlays.sq final prev)
-          // (self.overlays.terraria final prev)
-          // (self.overlays.drivers final prev);
+        default = final: prev: (self.overlays.sq final prev) // (self.overlays.drivers final prev);
       };
 
       packages.${system} = {
@@ -47,8 +42,10 @@
       devShells.${system}.default = pkgs.mkShellNoCC {
         packages = with pkgs; [
           nixd
-          nixfmt-rfc-style
+          nixfmt
         ];
       };
+
+      formatter.${system} = pkgs.nixfmt-tree;
     };
 }
